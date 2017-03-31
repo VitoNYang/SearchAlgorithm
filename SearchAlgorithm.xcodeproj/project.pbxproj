@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F17AF5E1E8E9F3B001AAD9E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F17AF5D1E8E9F3B001AAD9E /* Extension.swift */; };
+		3F17AF621E8EB0AE001AAD9E /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F17AF611E8EB0AE001AAD9E /* AlertUtil.swift */; };
 		3F8636E41E8D10770038596E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8636E31E8D10770038596E /* AppDelegate.swift */; };
 		3F8636E61E8D10770038596E /* BFSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8636E51E8D10770038596E /* BFSViewController.swift */; };
 		3F8636E91E8D10770038596E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F8636E71E8D10770038596E /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F17AF5D1E8E9F3B001AAD9E /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		3F17AF611E8EB0AE001AAD9E /* AlertUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		3F8636E01E8D10770038596E /* SearchAlgorithm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchAlgorithm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F8636E31E8D10770038596E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F8636E51E8D10770038596E /* BFSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BFSViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F17AF5C1E8E9F17001AAD9E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3F17AF5D1E8E9F3B001AAD9E /* Extension.swift */,
+				3F17AF611E8EB0AE001AAD9E /* AlertUtil.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
 		3F8636D71E8D10770038596E = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +94,7 @@
 		3F8636E21E8D10770038596E /* SearchAlgorithm */ = {
 			isa = PBXGroup;
 			children = (
+				3F17AF5C1E8E9F17001AAD9E /* Util */,
 				3FE7DE091E8D8B040078516A /* View */,
 				3F8637061E8D109A0038596E /* AppDelegate */,
 				3F8637051E8D10900038596E /* ViewController */,
@@ -249,6 +263,8 @@
 				3F8636E61E8D10770038596E /* BFSViewController.swift in Sources */,
 				3FE7DE0B1E8D8B3B0078516A /* MazeCell.swift in Sources */,
 				3F8636E41E8D10770038596E /* AppDelegate.swift in Sources */,
+				3F17AF621E8EB0AE001AAD9E /* AlertUtil.swift in Sources */,
+				3F17AF5E1E8E9F3B001AAD9E /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

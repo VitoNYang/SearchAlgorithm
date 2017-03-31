@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Dx-Y8-zzB">
-                                <rect key="frame" x="0.0" y="126" width="375" height="541"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="531"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="sAG-Cn-s9n">
                                     <size key="itemSize" width="77" height="80"/>
@@ -64,51 +64,76 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="joQ-XI-iHv"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DnM-qo-SCe">
-                                <rect key="frame" x="36" y="40" width="303" height="66"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3aJ-LU-0ZX" userLabel="BackgroundView">
+                                <rect key="frame" x="20" y="40" width="335" height="76"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KmR-l9-N6R">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DnM-qo-SCe">
+                                        <rect key="frame" x="8" y="10" width="319" height="66"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input Maze Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avr-8F-WET">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="30"/>
-                                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hpc-0H-cHR">
-                                                <rect key="frame" x="123.5" y="0.0" width="179.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KmR-l9-N6R">
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Input Maze Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Avr-8F-WET">
+                                                        <rect key="frame" x="0.0" y="0.0" width="149.5" height="30"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hpc-0H-cHR">
+                                                        <rect key="frame" x="169.5" y="0.0" width="149.5" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DKP-1t-7jS">
+                                                <rect key="frame" x="0.0" y="35" width="319" height="31"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3w-xW-J5N">
+                                                        <rect key="frame" x="0.0" y="0.0" width="154.5" height="31"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                        <state key="normal" title="Reset">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="resetActionWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QLo-dO-dqy"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nK-Zk-KNF">
+                                                        <rect key="frame" x="164.5" y="0.0" width="154.5" height="31"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
+                                                        <state key="normal" title="Start">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="startSearchPathWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tQy-TH-fJi"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3w-xW-J5N">
-                                        <rect key="frame" x="0.0" y="35" width="303" height="31"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="17"/>
-                                        <state key="normal" title="Reset">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="resetActionWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QLo-dO-dqy"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
+                                <color key="backgroundColor" red="0.80874676830000003" green="0.5554146284" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="Qvg-F0-QlW"/>
+                                    <constraint firstAttribute="bottom" secondItem="DnM-qo-SCe" secondAttribute="bottom" id="55i-W9-pRg"/>
+                                    <constraint firstItem="DnM-qo-SCe" firstAttribute="leading" secondItem="3aJ-LU-0ZX" secondAttribute="leadingMargin" id="BAO-II-RwE"/>
+                                    <constraint firstItem="DnM-qo-SCe" firstAttribute="top" secondItem="3aJ-LU-0ZX" secondAttribute="top" constant="10" id="CBT-Xq-7GM"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="DnM-qo-SCe" secondAttribute="trailing" id="YIv-xr-8SX"/>
                                 </constraints>
-                            </stackView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6Dx-Y8-zzB" secondAttribute="bottom" id="0oA-MD-Hcf"/>
-                            <constraint firstItem="DnM-qo-SCe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="2wh-BQ-rF5"/>
-                            <constraint firstItem="6Dx-Y8-zzB" firstAttribute="top" secondItem="DnM-qo-SCe" secondAttribute="bottom" constant="20" id="TOm-TH-oqS"/>
+                            <constraint firstItem="3aJ-LU-0ZX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="7Ll-Gl-goV"/>
                             <constraint firstItem="6Dx-Y8-zzB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VJX-MD-3Pf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DnM-qo-SCe" secondAttribute="trailing" constant="20" id="e7g-S8-0Jr"/>
+                            <constraint firstItem="3aJ-LU-0ZX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="aqm-EL-gck"/>
+                            <constraint firstItem="6Dx-Y8-zzB" firstAttribute="top" secondItem="3aJ-LU-0ZX" secondAttribute="bottom" constant="20" id="mHH-36-TGe"/>
+                            <constraint firstAttribute="trailing" secondItem="3aJ-LU-0ZX" secondAttribute="trailing" constant="20" id="q0Y-c6-sec"/>
                             <constraint firstAttribute="trailing" secondItem="6Dx-Y8-zzB" secondAttribute="trailing" id="tAr-Ip-RM8"/>
-                            <constraint firstItem="DnM-qo-SCe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="vjh-Kt-w9A"/>
                         </constraints>
                     </view>
                     <connections>
