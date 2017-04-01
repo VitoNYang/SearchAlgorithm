@@ -16,10 +16,13 @@ class BFSViewController: UIViewController {
     // 迷宫矩阵, 0 代表无障碍, 1 代表有障碍
     var mazeMatrix = [[Int]]() {
         didSet {
+            route.removeAll()
             mazeCollectionView.reloadData()
             mazeMatrix.printArray()
         }
     }
+    
+    var route: [Edge<Int>] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +34,10 @@ class BFSViewController: UIViewController {
         mazeMatrix = [[Int]](repeating: [Int](repeating: 0, count: size), count: size)
     }
     
-    private func searchPath(source: (x: Int, y: Int), destination: (x: Int, y: Int))
+    private func searchPath(source: Vertex<Int>, destination: Vertex<Int>)
     {
         var queue = [source]
-        var visited = [source]
+        var visitedDic: [Vertex<Int> : Visited<Int>] = [source : .source]
         // 找了多少次找到
         var count = 0
         while let vertex = queue.first {
@@ -43,32 +46,53 @@ class BFSViewController: UIViewController {
             // 如果搜索的点和终点相等则说明找到了
             if vertex == destination {
                 print("找了 \(count) 次, 找到了！")
+                var vertex = vertex
+                var route: [Edge<Int>] = []
+                while let visited = visitedDic[vertex], case let .edge(edge) = visited{
+                    vertex = edge.source
+                    route = [edge] + route
+                }
+                self.route = route
+                mazeCollectionView.reloadData()
                 return
             }
             // 遍历所有周边可走的顶点
-            for neighborVertex in findNeighborVertex(source: vertex){
+            for neighborEdge in findNeighborEdges(source: vertex){
                 // 先判断是否访问过
-                if !visited.contains{ $0.x == neighborVertex.0 && $0.1 == neighborVertex.1} {
-                    // 如果没有访问过, 则将其入队
-                    queue.append(neighborVertex)
-                    // 将其标志为已访问
-                    visited.append(neighborVertex)
+                if visitedDic[neighborEdge.destination] == nil {
+                    queue.append(neighborEdge.destination)
+                    visitedDic[neighborEdge.destination] = .edge(neighborEdge)
                 }
+//                if !visited.contains{ $0.x == neighborVertex.0 && $0.1 == neighborVertex.1} {
+//                    // 如果没有访问过, 则将其入队
+//                    queue.append(neighborVertex)
+//                    // 将其标志为已访问
+//                    visited.append(neighborVertex)
+//                }
             }
         }
-        print("找了 \(count) 次没有找到")
+        self.route.removeAll()
+        mazeCollectionView.reloadData()
+        AlertUtil.alert(message: "找了 \(count) 次没有找到")
     }
     
-    /// 查找指定点的可走的邻点
-    private func findNeighborVertex(source: (x: Int, y: Int)) -> [(Int, Int)] {
-        let top = source + MatrixDirection.top.tupleValue
-        let right = source + MatrixDirection.right.tupleValue
-        let bottom = source + MatrixDirection.bottom.tupleValue
-        let left = source + MatrixDirection.left.tupleValue
+    /// 查找指定点的可走的邻边
+    private func findNeighborEdges(source: Vertex<Int>) -> [Edge<Int>] {
+        // 试图查找上下左右四个方向的点
+        let top = source.data + MatrixDirection.top.tupleValue
+        let right = source.data + MatrixDirection.right.tupleValue
+        let bottom = source.data + MatrixDirection.bottom.tupleValue
+        let left = source.data + MatrixDirection.left.tupleValue
         
-        return [top,right,bottom,left].filter { validVertex(vertex: $0) }
+        let edges = [top,right,bottom,left]
+            // 筛选出四个方向有效的点
+            .filter { validVertex(vertex: $0) }
+            // 将起点和有效的点组合成一条边
+            .map { Edge(source: source, destination: Vertex(data: $0)) }
+        return edges
     }
     
+    /// 判断该点是否有效: 在数组范围内, 并且不是障碍物
     private func validVertex(vertex: (x: Int, y: Int)) -> Bool{
         let validRange = 0..<mazeMatrix.count
         return validRange.contains(vertex.x) && validRange.contains(vertex.y) && mazeMatrix[vertex] != 1
@@ -87,7 +111,9 @@ class BFSViewController: UIViewController {
         if mazeMatrix[source] == 1 || mazeMatrix[destination] == 1{
             AlertUtil.alert(message: "Source Or Destination Can't be 1")
         }
-        searchPath(source: source, destination: destination)
+        let sourceVertex = Vertex(data: source)
+        let destinationVertex = Vertex(data: destination)
+        searchPath(source: sourceVertex, destination: destinationVertex)
     }
     
     @IBAction func resetAction(sender: UIButton) {
@@ -117,6 +143,9 @@ extension BFSViewController: UICollectionViewDataSource {
         let (x, y) = getIndex(from: indexPath)
         let item = mazeMatrix[x][y]
         cell.setCellState(state: MazeState(rawValue: item)!)
+        cell.backgroundColor = route.contains(where: { edge -> Bool in
+            return edge.source.data == (x, y) || edge.destination.data == (x, y)
+            }) ? .red : .white
         return cell
     }
 
